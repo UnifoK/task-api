@@ -26,9 +26,14 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
+//    public List<Task> searchTasks(String keyword) {
+//        return taskRepository.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(keyword, keyword);
+//    }
+
     public List<Task> searchTasks(String keyword) {
-        return taskRepository.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(keyword, keyword);
+        return taskRepository.searchByTitleOrDescription(keyword);
     }
+
 
     public Task updateTask(int id, Task updatedTask) {
         Task task = taskRepository.findById(id).orElseThrow();
